@@ -1,0 +1,31 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/base}">
+<head>
+    <title>Войти в систему</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <h2 class="text-center">Вход в систему</h2>
+    <form action="@{/auth}" method="post" class="border rounded shadow p-3 mt-3" th:object="${loginForm}">
+        <div class="mb-3">
+            <label for="email" class="form-label">Email:</label>
+            <input type="email" class="form-control" id="email" name="email">
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password:</label>
+            <input type="password" class="form-control" id="password" name="password">
+        </div>
+        <div th:if="${param.error}" class="alert alert-danger mb-3">
+            Неверное имя пользователя или пароль
+        </div>
+        <div class="d-grid">
+            <button type="submit" class="btn btn-success">Войти</button>
+        </div>
+    </form>
+</div>
+
+
+</body>
+</html>
